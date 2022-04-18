@@ -13,7 +13,7 @@ class KNN:
         #return mushroom_dataset
 
     def fit(self, X, y):
-        self.X_train = X
+        self.X_train = X 
         self.y_train = y
 
     def predict(self, X):
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     mushroom_dataset["population"] = mushroom_dataset['population'].astype(int)
     mushroom_dataset["habitat"] = mushroom_dataset['habitat'].astype(int)
     acc=[]
-    
+
     for i in range(10):
         mushroom_dataset = mushroom_dataset.sample(frac=1)
         k = 2

@@ -43,13 +43,15 @@ if __name__ == "__main__":
     letter_dataset = pd.read_csv('./data/letter-recognition.data', names=["lettr", "x-box", "y-box", "width", "high", "onpix", "x-bar", "y-bar", "x2bar", "y2bar", "xybar", "x2ybr", "xy2br", "x-ege", "xegvy", "y-ege", "yegvx"])
     ObjectColumns = letter_dataset.select_dtypes(include=np.object).columns.tolist()
     letter_dataset['lettr'] = [ord(item)-64 for item in letter_dataset['lettr']]
+    acc = []
+
     for i in range(10):
         letter_dataset = letter_dataset.sample(frac=1)
         k = 2
         
         model = KNN(k)
-        X = letter_dataset.drop(["id","decision"], axis = 1)
-        y = letter_dataset.decision
+        X = letter_dataset.drop(["lettr"], axis = 1)
+        y = letter_dataset.lettr
         X = X.to_numpy()
         y = y.to_numpy()
 
